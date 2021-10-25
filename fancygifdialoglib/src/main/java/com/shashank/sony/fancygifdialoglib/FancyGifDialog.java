@@ -8,6 +8,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.ColorRes;
@@ -31,6 +32,7 @@ public class FancyGifDialog {
     private FancyGifDialogListener pListener, nListener;
     private Dialog.OnCancelListener cancelListener;
     private boolean cancel;
+    private boolean isNormalImage;
     int gifImageResource;
 
 
@@ -48,6 +50,7 @@ public class FancyGifDialog {
         this.negativeBtnText = builder.negativeBtnText;
         this.gifImageResource = builder.gifImageResource;
         this.cancel = builder.cancel;
+        this.isNormalImage = builder.isNotmalImage;
         this.cancelListener = builder.cancelListener;
     }
 
@@ -62,7 +65,12 @@ public class FancyGifDialog {
         private boolean cancel;
         int gifImageResource;
         private Dialog.OnCancelListener cancelListener;
+        private boolean isNotmalImage;
 
+        public Builder setNotmalImage(boolean notmalImage) {
+            isNotmalImage = notmalImage;
+            return this;
+        }
 
         public Builder(Context context) {
             this.context = context;
@@ -155,6 +163,7 @@ public class FancyGifDialog {
             TextView message1, title1;
             Button nBtn, pBtn;
             GifImageView gifImageView;
+            ImageView normalimage;
 
             final Dialog dialog;
             dialog = new Dialog(context);
@@ -170,8 +179,19 @@ public class FancyGifDialog {
             message1 = dialog.findViewById(R.id.message);
             nBtn = dialog.findViewById(R.id.negativeBtn);
             pBtn = dialog.findViewById(R.id.positiveBtn);
+            normalimage = dialog.findViewById(R.id.normalimage);
             gifImageView = dialog.findViewById(R.id.gifImageView);
-            gifImageView.setImageResource(gifImageResource);
+            if (!isNotmalImage){
+                gifImageView.setImageResource(gifImageResource);
+                normalimage.setVisibility(View.GONE);
+                gifImageView.setVisibility(View.VISIBLE);
+            }else {
+                normalimage.setImageResource(gifImageResource);
+                normalimage.setVisibility(View.VISIBLE);
+                gifImageView.setVisibility(View.GONE);
+            }
+
+
 
             title1.setText(title);
             message1.setText(message);

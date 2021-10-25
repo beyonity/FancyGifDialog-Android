@@ -39,8 +39,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .setDescriptionTextColor(R.color.descriptionText)
                         .setPositiveBtnBackground(R.color.positiveButton)
                         .setPositiveBtnText("Ok")
+                        .setNotmalImage(true)
                         .setNegativeBtnBackground(R.color.negativeButton)
-                        .setGifResource(R.drawable.gif1)
+                        .setGifResource(R.drawable.image_two)
                         .isCancellable(true)
                         .OnPositiveClicked(new FancyGifDialogListener() {
                             @Override

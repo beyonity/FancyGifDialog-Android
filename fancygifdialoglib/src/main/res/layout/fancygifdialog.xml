@@ -8,14 +8,13 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="10dp"
-        app:cardElevation="16dp"
-        app:cardUseCompatPadding="true">
+        app:cardElevation="16dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -29,9 +28,17 @@
                 <pl.droidsonroids.gif.GifImageView
                     android:id="@+id/gifImageView"
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
                     android:layout_centerHorizontal="true"
-                    android:scaleType="centerCrop"
+                    android:src="@drawable/gif1" />
+
+                <ImageView
+                    android:id="@+id/normalimage"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleType="fitXY"
+                    android:layout_centerHorizontal="true"
                     android:src="@drawable/gif1" />
 
             </RelativeLayout>
